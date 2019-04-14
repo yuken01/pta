@@ -31,7 +31,7 @@ class polList {
 		void inp(int num) {
 			for(int i=0; i<num; i++) {
 				int coe1,exp1;
-				cin>>coe1>>exp1;
+				std::cin>>coe1>>exp1;
 				TailIn( coe1, exp1);
 			}
 		}
@@ -63,11 +63,11 @@ class polList {
 					p2 = p2 ->next;
 				}
 			}
-			if((p1 !=0) {
+			if(p1 !=0) {
 			L3.TailIn((p1->coe),p1->exp);
 				p1 = p1 ->next;
 			}
-			if((p2 !=0) {
+			if(p2 !=0) {
 			L3.TailIn((p2->coe),p2->exp);
 				p2 = p2 ->next;
 			}
@@ -75,12 +75,13 @@ class polList {
 		}
 
 		polList& mul(polList& L1,polList& L2) {
-			polList L3;
+			 polList L3;
 			for(polNode *p1=L1.head; p1 !=0;	p1 = p1 ->next) {
 				for(polNode *p2=L2.head; p2 !=0;	p2 = p2 ->next) {
-					L3.CompIn((p1->coe)*(p2->coe)),p1->exp+p2->exp)
+					L3.CompIn(((p1->coe)*(p2->coe)),p1->exp+p2->exp);
 				}
 			}
+			return L3;
 		}
 
 
@@ -99,7 +100,7 @@ class polList {
 			polNode *pred, *tmp;
 			if (head != 0) {                    // if non-empty list;
 				if (head == tail && head->exp >= exp1) {
-					TailIn( coe1, exp1)//only 1 but can TailIn
+					TailIn( coe1, exp1);//only 1 but can TailIn
 				} else if (head == tail&& head->exp < exp1) { //only 1 and must headin
 					head = new polNode( coe1, exp1,head);
 				} else for (pred = head, tmp = head->next;
@@ -124,10 +125,10 @@ int main() {
 		std::cin>>num;
 		L[i].inp(num);
 	}
-	L[2]=	add(L1, L2);
-	L[3]=	mul(L1, L2);
-	oup(L[3]);
-	oup(L[2]);
+	polList::L[2]=polList::add(polList::L1, polList::L2);
+	polList::L[3]=polList::mul(polList::L1, polList::L2);
+	oup(polList::L[3]);
+	oup(polList::L[2]);
 	return 0;
 }
 
