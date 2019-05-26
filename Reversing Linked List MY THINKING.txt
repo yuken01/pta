@@ -1,0 +1,118 @@
+you can create partial linked lists while you get the input 
+by searching whether the address has been created.
+
+how to search and connect if needed more efficiently?
+
+each input line ,you will create two nodes 
+if the next has not been created.
+
+at the end of input , 
+ you will get a complete ordered linked list
+ which starts with the node called beginning
+which has null data but 0 given_address 
+and connect with first node.
+ and ends with the node called ending
+which has null data but -1 given_address 
+and connect with null.
+
+delete the useless nodes
+
+considering the useless disturbing nodes ,
+you can go through the final linked list 
+to get the total actual number of it.
+
+then reverse 
+k--reversed number 
+(due to reverse the links of every K elements on L)
+n--the total actual number 
+c--(int)n/k, 
+_c is used to 
+_indicate the number of sections of reversed partial linked lists
+!remember, when c==0 or n==k or n<k, 
+you do not need to do reversion
+
+r--n%k
+_r is used to
+_indicate whether you have residues 
+
+
+you can output the reversed linked list 
+from the last member of the ith section 
+to the head of this section in the inversed form
+then connect to the last member of the i+1th section 
+from the last member of the i+1th section 
+to the head of this section in the inversed form
+......
+i:=1-->c
+
+
+at last you need to output 
+from the head of the residues to the end of list
+in the former order
+
+
+
+but if you need to get the actual reversed linked list,
+you are required to create a model .
+
+after reversing,
+each section has its  head and 
+tail(or you can call it the head of next section)
+you should connect its head with the tail of last section
+and leave the tail to next connection
+
+last_tail
+this_head 
+this_tail
+
+in general, when you enter a new section, 
+you have last_tail when you leave last section.
+after the reversion has ended,
+you need to connect this_head with last_tail 
+such as last_tail->next=this_head 
+you also need to set this_tail to last_tail
+and enter a new section,
+do the same thing again......
+
+at the beginning of the linked list,
+ set a node called beginning 
+which the data is null,
+the address is 0,
+but it connect with the first node address.
+last_tail=beginning 
+
+you can directly enter the first reversing section,
+last_tail =beginning 
+
+after c reversions have done,
+enter new residue section,
+last_tail ->next= this_head,
+but this time the property of this_head is different now.
+
+how to reverse along the ith reversion section? 
+i>=1 i<=c
+you now have last_tail 
+
+ last_tail ->next =this_head
+
+you need three indexes which will go along all members in ith section
+we can call them ith_beginning , ith_ending , ith_temporary
+
+at first , last_tail ->next = ith_beginning 
+ith_beginning ->next = ith_ending 
+ith_ending ->next = ith_temporary
+
+{revesing key action:
+ith_ending ->next =ith_beginning 
+
+go on :
+ith_beginning = ith_ending 
+ith_ending = ith_temporary
+ith_temporary = ith_temporary ->next}
+do these things in{} k-1 times 
+
+this_tail=ith_beginning (at last)
+
+and you will enter a new reversion section
+last_tail=this_tail
+
